@@ -53,27 +53,5 @@ sed -i '/thermald/d' init.mako.rc
 sed -i '/auditd/{n; /class main$/d}' init.rc
 sed -i '/auditd/d' init.rc
 
-# add AK tuning
-echo "Checking for ramdisk patching ...";
-if grep -q aktuning init.mako.rc; then
-	echo "Found AK tunables into ramdisk! - Tuning only Ondemand";
-        # add ondemand tuneables
-        sed 's/scaling_governor.*/scaling_governor \"ondemand\"/' -i init.mako.rc
-        sed 's/up_threshold.*/up_threshold 90/' -i init.mako.rc
-        sed 's/sampling_rate.*/sampling_rate 30000/' -i init.mako.rc
-        sed 's/io_is_busy.*/io_is_busy 1/' -i init.mako.rc
-        sed 's/sampling_down_factor.*/sampling_down_factor 4/' -i init.mako.rc
-	sed 's/optimal_freq.*/optimal_freq 918000/' -i init.mako.rc
-	sed 's/sync_freq.*/sync_freq 1026000/' -i init.mako.rc
-else
-	# add ondemand tuneables
-	sed 's/scaling_governor.*/scaling_governor \"ondemand\"/' -i init.mako.rc
-	sed 's/up_threshold.*/up_threshold 90/' -i init.mako.rc
-	sed 's/sampling_rate.*/sampling_rate 30000/' -i init.mako.rc
-	sed 's/io_is_busy.*/io_is_busy 1/' -i init.mako.rc
-	sed 's/sampling_down_factor.*/sampling_down_factor 4/' -i init.mako.rc
-	sed -e 's/sampling_down_factor.*/&\n    # insert aktuning\n    write \/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/down_differential 10\n    write \/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/up_threshold_multi_core 60\n    write \/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/down_differential_multi_core 3\n    write \/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/optimal_freq 918000\n    write \/sys\/devices\/system\/cpu\/cpufreq\/ondemand\/sync_freq 1026000/' -i init.mako.rc
-fi
-
 find . | cpio -o -H newc | gzip > ../newramdisk.cpio.gz
 cd /
