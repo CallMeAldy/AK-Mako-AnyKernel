@@ -40,7 +40,7 @@ echo "interactive" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
 # 200000 uS is used until speed 1.5 GHz, at which speed (and above)
 # delay 40000 uS is used. If speeds are specified these must appear in
 # ascending order. Default is 20000 uS.
-echo "20000 1206000:40000 1350000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+echo "20000 1026000:40000 1350000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
 
 # target_loads:
 # CPU load values used to adjust speed to influence the
