@@ -58,7 +58,7 @@ echo "85 1026000:90 1350000:95" > /sys/devices/system/cpu/cpufreq/interactive/ta
 # go_hispeed_load:
 # The CPU load at which to ramp to hispeed_freq.
 # Default is 99%.
-echo "90" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+echo "99" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
 echo "1350000" > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
 echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
 
@@ -66,7 +66,7 @@ echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
 # The minimum amount of time to spend at the current
 # frequency before ramping down.
 # Default is 80000 uS.
-echo "40000 1350000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+echo "60000 1350000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
 
 # timer_rate:
 # Sample rate for reevaluating CPU load when the CPU is not
@@ -110,7 +110,7 @@ echo "100000" > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
 # to its default value of '95' it means that between the checking
 # intervals the CPU needs to be on average more than 95% in use to then
 # decide that the CPU frequency needs to be increased.
-echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
+echo "90" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
 echo "1026000" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq
 
 # This is a flag that determines if waiting for various IO should increase
@@ -125,10 +125,10 @@ echo "1" > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
 ##################################################################
 ### set cpu boost tunables
 ###
-echo "10" > /sys/module/cpu_boost/parameters/boost_ms
-echo "918000" > /sys/module/cpu_boost/parameters/sync_threshold
-echo "1350000" > /sys/module/cpu_boost/parameters/input_boost_freq
-echo "40" > /sys/module/cpu_boost/parameters/input_boost_ms
+echo "0" > /sys/module/cpu_boost/parameters/boost_ms
+echo "0" > /sys/module/cpu_boost/parameters/sync_threshold
+echo "0" > /sys/module/cpu_boost/parameters/input_boost_freq
+echo "0" > /sys/module/cpu_boost/parameters/input_boost_ms
 
 ##################################################################
 ### set hotplug tunables
