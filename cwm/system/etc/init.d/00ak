@@ -8,7 +8,7 @@
 ### set freqs clock at boot
 ###
 min=384000
-max=1512000
+max=1728000
 echo "$min" > /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
 echo "$min" > /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq
 echo "$min" > /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq
@@ -53,12 +53,12 @@ echo "20000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/intera
 #
 # For example:
 # 85 1000000:90 1700000:99
-echo "85 1134000:90 1350000:70" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+echo "85 1134000:90 1350000:95" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
 
 # go_hispeed_load:
 # The CPU load at which to ramp to hispeed_freq.
 # Default is 99%.
-echo "90" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+echo "99" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
 echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
 echo "810000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
 
@@ -66,7 +66,7 @@ echo "810000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
 # The minimum amount of time to spend at the current
 # frequency before ramping down.
 # Default is 80000 uS.
-echo "40000 1134000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+echo "60000 1134000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
 
 # timer_rate:
 # Sample rate for reevaluating CPU load when the CPU is not
@@ -88,7 +88,7 @@ echo "20000 594000:30000 1134000:40000" > /sys/devices/system/cpu/cpufreq/intera
 # when not at lowest speed. A value of -1 means defer timers
 # indefinitely at all speeds.
 # Default is 80000 uS.
-echo "-1 594000:30000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
+echo "-1 594000:80000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
 
 # sampling_down_factor:
 # this parameter controls the rate at which the
