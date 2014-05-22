@@ -40,7 +40,7 @@ echo "interactive" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
 # 200000 uS is used until speed 1.5 GHz, at which speed (and above)
 # delay 40000 uS is used. If speeds are specified these must appear in
 # ascending order. Default is 20000 uS.
-echo "20000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+#echo "20000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
 
 # target_loads:
 # CPU load values used to adjust speed to influence the
@@ -53,20 +53,20 @@ echo "20000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/intera
 #
 # For example:
 # 85 1000000:90 1700000:99
-echo "85 1134000:90 1350000:95" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
+#echo "85 1134000:90 1350000:95" > /sys/devices/system/cpu/cpufreq/interactive/target_loads
 
 # go_hispeed_load:
 # The CPU load at which to ramp to hispeed_freq.
 # Default is 99%.
-echo "99" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-echo "810000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
+#echo "99" > /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
+echo "1350000" > /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+#echo "810000" > /sys/devices/system/cpu/cpufreq/interactive/sync_freq
 
 # min_sample_time:
 # The minimum amount of time to spend at the current
 # frequency before ramping down.
 # Default is 80000 uS.
-echo "60000 1134000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+#echo "60000 1134000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
 
 # timer_rate:
 # Sample rate for reevaluating CPU load when the CPU is not
@@ -75,7 +75,7 @@ echo "60000 1134000:80000" > /sys/devices/system/cpu/cpufreq/interactive/min_sam
 # (The maximum time to allow deferring this timer when not running at
 # minimum speed is configurable via timer_slack.)
 # Default is 20000 uS.
-echo "20000 594000:30000 1134000:40000" > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
+#echo "20000 594000:30000 1134000:40000" > /sys/devices/system/cpu/cpufreq/interactive/timer_rate
 
 # timer_slack:
 # Maximum additional time to defer handling the governor
@@ -88,7 +88,7 @@ echo "20000 594000:30000 1134000:40000" > /sys/devices/system/cpu/cpufreq/intera
 # when not at lowest speed. A value of -1 means defer timers
 # indefinitely at all speeds.
 # Default is 80000 uS.
-echo "-1 594000:80000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
+#echo "-1 594000:80000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpufreq/interactive/timer_slack
 
 # sampling_down_factor:
 # this parameter controls the rate at which the
@@ -101,7 +101,7 @@ echo "-1 594000:80000 918000:40000 1134000:20000" > /sys/devices/system/cpu/cpuf
 # of load evaluation and helping the CPU stay at its top speed when truly
 # busy, rather than shifting back and forth in speed. This tunable has no
 # effect on behavior at lower speeds/lower CPU loads.
-echo "100000" > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
+#echo "100000" > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
 
 # up_threshold:
 # defines what the average CPU usage between the samplings
@@ -110,8 +110,8 @@ echo "100000" > /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
 # to its default value of '95' it means that between the checking
 # intervals the CPU needs to be on average more than 95% in use to then
 # decide that the CPU frequency needs to be increased.
-echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
-echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq
+#echo "50" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load
+#echo "918000" > /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq
 
 # This is a flag that determines if waiting for various IO should increase
 # the CPU utilization in bump up the cpu frequency.
@@ -125,10 +125,10 @@ echo "1" > /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
 ##################################################################
 ### set cpu boost tunables
 ###
-echo "10" > /sys/module/cpu_boost/parameters/boost_ms
-echo "1242000" > /sys/module/cpu_boost/parameters/sync_threshold
-echo "1026000" > /sys/module/cpu_boost/parameters/input_boost_freq
-echo "40" > /sys/module/cpu_boost/parameters/input_boost_ms
+echo "0" > /sys/module/cpu_boost/parameters/boost_ms
+echo "0" > /sys/module/cpu_boost/parameters/sync_threshold
+echo "0" > /sys/module/cpu_boost/parameters/input_boost_freq
+echo "0" > /sys/module/cpu_boost/parameters/input_boost_ms
 
 ##################################################################
 ### set hotplug tunables
