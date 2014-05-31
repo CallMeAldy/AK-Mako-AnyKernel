@@ -4,8 +4,10 @@
 # @anarkia1976
 #
 
+echo "Let's go AK ..."
+
 ##################################################################
 ### set hotplug tunables
 ###
-echo "500" > /sys/module/msm_hotplug/down_lock_duration
-echo "2500" > /sys/module/msm_hotplug/boost_lock_duration
+#echo "500" > /sys/module/msm_hotplug/down_lock_duration
+#echo "2500" > /sys/module/msm_hotplug/boost_lock_duration
