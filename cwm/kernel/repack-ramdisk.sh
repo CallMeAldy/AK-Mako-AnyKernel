@@ -37,6 +37,9 @@ fi
 # make kernel open
 cp -vr ../extras/default.prop .
 
+# add ak logo
+cp -vr ../extras/aklogo.rle .
+
 # remove frequencies overrides, use kernel default
 sed -i '/\/sys\/devices\/system\/cpu\/cpu0\/cpufreq\/scaling_min_freq/d' init.mako.rc
 sed -i '/\/sys\/devices\/system\/cpu\/cpu1\/cpufreq\/scaling_min_freq/d' init.mako.rc
