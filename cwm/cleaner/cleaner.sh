@@ -34,7 +34,7 @@ rm -rf /data/data/aperture.ezekeel.gladoscontrol/shared_prefs
 rm -rf /data/data/com.derkernel.tkt/shared_prefs
 rm -rf /data/data/com.franco.kernel/shared_prefs
 rm -rf /data/data/com.liquid.control/shared_prefs
-rm -rf //data/data/com.af.synapse/databases/*
+#rm -rf //data/data/com.af.synapse/databases/*
 
 # remove dalvik cache
 #rm -rf /data/dalvik-cache
